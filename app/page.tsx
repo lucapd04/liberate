@@ -1,9 +1,14 @@
-import { invoke } from '@tauri-apps/api/tauri'
-const invoke = window.__TAURI__.invoke
-invoke('show_screen')
+'use client'
 
+import { invoke } from '@tauri-apps/api/tauri'
 
 export default function Home() {
+
+  setTimeout( () => invoke("show_window"), 15000);
+ 
+
+
+
   return (
     <main>
       

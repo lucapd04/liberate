@@ -64,15 +64,23 @@ fn main() {
       }
       _ => {}
     })
-    .invoke_handler(tauri::generate_handler![show_screen])
+    .invoke_handler(tauri::generate_handler![show_window])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
 
 
+
 #[tauri::command]
-fn show_screen() {
-  let window = app.get_window("main").unwrap();
+fn show_window(window: tauri::Window) {
   window.show().unwrap();
 }
+
+
+
+// #[tauri::command]
+// fn get_Processes() -> String {
+
+// }
+
 
