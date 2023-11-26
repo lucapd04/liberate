@@ -2,19 +2,44 @@
 
 import { invoke } from '@tauri-apps/api/tauri'
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ChooseApp from '../components/ChooseApp';
 import { appWindow } from '@tauri-apps/api/window';
-
-
+import { getExeName } from '@/actions/binaryName';
+import usePathStore from '@/store/usePathStore';
 
 export default function Home() {
   console.log(invoke("get_process_names"));
 
   const [application, setApplication] = useState("");
+  const {path} = usePathStore();
 
   const handleData = (dataFromChild:string) => {
     setApplication(dataFromChild);
+  }
+
+  console.log(getExeName(path));
+  async function checkProcessAndShowWindow() {
+    const processNames = await invoke("get_process_names");
+    
+    if (processNames.includes(getExeName(path))) {
+      invoke('show_window');
+    }
+  }
+  
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log('This will run every second!');
+      checkProcessAndShowWindow();
+    }, 1000); // 1000 milliseconds = 1 second
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const handleArea = () => {
+
+
   }
 
 
