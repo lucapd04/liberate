@@ -78,7 +78,3 @@ fn get_process_names() -> Vec<String> {
     sys.refresh_all();
     sys.processes().values().map(|process| process.name().to_string()).collect()
 }
-
-
-
-

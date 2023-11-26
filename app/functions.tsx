@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/tauri'
+// import { invoke } from '@tauri-apps/api/tauri'
 // invoke('get_process', {})  Get process returns a string with the name of the application running
 
 interface unanalizedData{
@@ -25,6 +25,9 @@ function user_info () {
 
 }
 
+
+// Timer that can pause using timer.pause() and resume using timer.resume()
+// Returns true when complete
 function timer (get_process, specifiedProcess) {
     var Timer = function(callback, delay) {
         var timerId, start, remaining = delay;
@@ -66,11 +69,6 @@ function appTimeLimit (get_process) {
         // URL: [TimeLimit, TimeCompletion]
         // ...
     }
-
-    // Timer that can pause using 'timer.pause()' and resume using 'timer.resume()'
-    
-
-
 }
 
 
