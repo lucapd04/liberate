@@ -9,7 +9,6 @@ use tauri::SystemTrayEvent;
 use sysinfo::{ProcessExt, System, SystemExt};
 
 
-
 fn main() {
   // here `"quit".to_string()` defines the menu item id, and the second parameter is the menu item label.
   let quit = CustomMenuItem::new("quit".to_string(), "Quit");

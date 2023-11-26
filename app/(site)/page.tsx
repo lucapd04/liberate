@@ -2,25 +2,29 @@
 
 import { invoke } from '@tauri-apps/api/tauri'
 import { Button } from '@/components/ui/button'
-import { Slide1 } from '../components/Slide1'
 import React, { useState } from 'react';
+import ChooseApp from '../components/ChooseApp';
+
+
+
 
 export default function Home() {
-  const [slideNum, setSlideNum] = useState(1);
 
+  console.log(invoke("get_process_names"))
 
-  if (slideNum == 1){
-    return (
-      <main>
-        <Slide1>
-        </Slide1>
-      </main>
-    )
+  const [application, setApplication] = useState("");
+
+  const handleData = (dataFromChild:string) => {
+    setApplication(dataFromChild);
   }
 
 
   return (
-    <div></div>
-  )
 
+
+
+    <div>
+      <ChooseApp/>
+    </div>
+  )
 }
