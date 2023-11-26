@@ -23,7 +23,9 @@ export default function Home() {
     const processNames = await invoke("get_process_names");
     
     if (processNames.includes(getExeName(path))) {
-      invoke('show_window');
+      useEffect(() => {
+        invoke('show_window');
+      },[path])
     }
   }
   
