@@ -7,6 +7,8 @@ use tauri::{CustomMenuItem, SystemTrayMenu, SystemTrayMenuItem};
 use tauri::Manager;
 use tauri::SystemTrayEvent;
 use sysinfo::{ProcessExt, System, SystemExt};
+use tauri::PhysicalSize;
+use tauri::Size;
 
 
 fn main() {
@@ -69,6 +71,7 @@ fn main() {
 #[tauri::command]
 fn show_window(window: tauri::Window) {
   window.show().unwrap();
+  window.set_size(Size::Physical(PhysicalSize { width: 100, height: 100 })).unwrap();
 }
 
 #[tauri::command]
@@ -77,6 +80,7 @@ fn get_process_names() -> Vec<String> {
     sys.refresh_all();
     sys.processes().values().map(|process| process.name().to_string()).collect()
 }
+
 
 
 

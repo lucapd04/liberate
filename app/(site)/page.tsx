@@ -7,11 +7,8 @@ import ChooseApp from '../components/ChooseApp';
 import { userEnviroBtn } from './functions';
 import { continueBtn } from './functions';
 
-
-
 export default function Home() {
-
-  console.log(invoke("get_process_names"))
+  console.log(invoke("get_process_names"));
 
   const [application, setApplication] = useState("");
 
@@ -21,7 +18,9 @@ export default function Home() {
 
 
 return (
+  
   <div className="bg-[#01003b] flex flex-row justify-center w-full">
+    <ChooseApp parentCallBack={handleData}/>
     <div className="bg-[#01003b] w-[1280px] h-[832px] relative">
       <p className="absolute top-[56px] left-[284px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#fffdfd] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
         Let’s get to know you a bit better....
@@ -70,7 +69,6 @@ return (
           />
         </button>
       </div>
-
       <div className="absolute w-[188px] h-[219px] top-[557px] left-[298px]">
         <button className="absolute w-[188px] h-[219px] top-0 left-0">
           <div className="relative w-[186px] h-[219px] bg-[#d9d9d93d] rounded-[10px]">
@@ -86,14 +84,12 @@ return (
           />
         </button>
       </div>
-
       <p className="absolute top-[501px] left-[98px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#fffdfd] text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
         WHAT DO YOU WANT TO BLOCK?
       </p>
-
       <div className="absolute w-[504px] h-[62px] top-[693px] left-[644px]">
         /** Name of text box is "txtBox" */
-        <button onClick={() => continueBtn()} className="relative w-[502px] h-[62px] bg-[#d9d9d93d] rounded-[100px]">
+        <button /**onClick={() => continueBtn()} */className="relative w-[502px] h-[62px] bg-[#d9d9d93d] rounded-[100px]">
           <div className="absolute w-[180px] top-[19px] left-[161px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-white text-[25px] tracking-[5.00px] leading-[normal] whitespace-nowrap">
             CONTINUE
           </div>
@@ -104,7 +100,7 @@ return (
   </div>
 );
 
-<div>
-  <ChooseApp/>
-</div>
+    <div>
+      <ChooseApp parentCallBack={handleData}/>
+    </div>
 }
