@@ -4,13 +4,13 @@ import { invoke } from '@tauri-apps/api/tauri'
 import { Button } from '@/components/ui/button'
 import React, { useState } from 'react';
 import ChooseApp from '../components/ChooseApp';
-
+import { appWindow } from '@tauri-apps/api/window';
 
 
 
 export default function Home() {
-
-  console.log(invoke("get_process_names"))
+  appWindow.setSize({width: 1280, height: 832, type: "Physical"});
+  console.log(invoke("get_process_names"));
 
   const [application, setApplication] = useState("");
 
@@ -24,7 +24,7 @@ export default function Home() {
 
 
     <div>
-      <ChooseApp/>
+      <ChooseApp parentCallBack={handleData}/>
     </div>
   )
 }

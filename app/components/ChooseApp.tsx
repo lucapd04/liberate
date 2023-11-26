@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { invoke } from '@tauri-apps/api/tauri'
 import { open } from '@tauri-apps/api/dialog';
+import usePathStore from '@/store/usePathStore';
 
 
-const ChooseApp = () => {
-    const [path,setPath] = useState("");
+const ChooseApp = ({parentCallBack}) => {
+    const {path, setPath} = usePathStore();
 
     const handleClick = async () => {
         const selected = await open({
@@ -15,6 +15,7 @@ const ChooseApp = () => {
         
           if (selected !== null) {
             console.log(selected);  // This will log the selected file path
+            parentCallBack(selected);
           } else {
             console.log('No file selected');
           }
@@ -23,6 +24,7 @@ const ChooseApp = () => {
 
   return (
     <Button placeholder='Please Choose an App' onClick={handleClick}>
+        Please Choose an App
     </Button>
   )
 }
